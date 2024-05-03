@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
     public float speed;
     public float runSpeed;
+
 
     private void Start()
     {
@@ -42,13 +44,26 @@ public class PlayerController : MonoBehaviour
             moveDirection = new Vector2(xx, yy);
             rb2d.velocity = moveDirection.normalized * speed;
 
+            Encounter();
             PlayerState = PlayerState.Walk;
         }
-      /*  else
+        else
         {
             rb2d.velocity = moveDirection.normalized * 0;
             PlayerState = PlayerState.Idle;
-        }*/
+        }
 
+    }
+
+    void Encounter()
+    {
+        int random = Random.Range(1, 1000);
+
+        if (random <= 5)
+        {
+            Debug.Log("Encounter");
+            SceneManager.LoadScene("Battle");
+        }
+        
     }
 }
