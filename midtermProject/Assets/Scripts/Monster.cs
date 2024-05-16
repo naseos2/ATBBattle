@@ -8,11 +8,18 @@ public class Monster : MonoBehaviour
     public float atbTime;
     private float nowTime;
 
+    public float maxHp;
+    public float nowHp;
+
     public Slider atbSlider;
+    public Slider hpSlider;
+
+    public PlayerBattle player;
 
     private void Start()
     {
         nowTime = 0f;
+        hpSlider.value = nowHp / maxHp;
     }
 
     private void Update()
@@ -23,7 +30,14 @@ public class Monster : MonoBehaviour
         if (nowTime >= atbTime)
         {
             Debug.Log("Monster's Attack!");
+            player.nowHp -= 10;
+            player.hpSlider.value = player.nowHp / player.maxHp;
             nowTime = 0f;
+        }
+
+        if (nowHp <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
