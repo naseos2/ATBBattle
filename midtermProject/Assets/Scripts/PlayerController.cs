@@ -20,12 +20,21 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float runSpeed;
 
+    private Animator anim;
+
 
     private void Start()
     {
         Application.targetFrameRate = 30;
 
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        anim.SetFloat("MoveX", Input.GetAxis("Horizontal"));
+        anim.SetFloat("MoveY", Input.GetAxis("Vertical"));
     }
 
     private void FixedUpdate()
@@ -37,14 +46,14 @@ public class PlayerController : MonoBehaviour
     {
         float xx = Input.GetAxis("Horizontal");
         float yy = Input.GetAxis("Vertical");
-        
 
         if (xx != 0 || yy != 0)
         {
             moveDirection = new Vector2(xx, yy);
+
             rb2d.velocity = moveDirection.normalized * speed;
 
-            Encounter();
+            //Encounter();
             PlayerState = PlayerState.Walk;
         }
         else
