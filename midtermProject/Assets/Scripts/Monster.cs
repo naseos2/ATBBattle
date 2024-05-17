@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Monster : MonoBehaviour
 {
     public float atbTime;
@@ -37,7 +38,15 @@ public class Monster : MonoBehaviour
 
         if (nowHp <= 0)
         {
-            Destroy(gameObject);
+            MonsterDead();
         }
     }
+
+    public void MonsterDead()
+    {
+        gameObject.SetActive(false);
+        Destroy(atbSlider.gameObject);
+        Destroy(player.atbSlider.gameObject);
+    }
+
 }
