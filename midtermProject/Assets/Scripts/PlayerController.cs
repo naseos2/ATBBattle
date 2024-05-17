@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
             rb2d.velocity = moveDirection.normalized * speed;
 
-            //Encounter();
+            Encounter();
             PlayerState = PlayerState.Walk;
         }
         else
