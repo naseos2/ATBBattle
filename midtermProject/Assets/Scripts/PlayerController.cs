@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public enum PlayerState
@@ -22,9 +23,17 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
 
+    [InitializeOnLoadMethod]
+    static void RunMethod()
+    {
+        PlayerPrefs.SetFloat("X", 0f);
+        PlayerPrefs.SetFloat("Y", -2f);
+    }
 
     private void Start()
     {
+        Load();
+
         Application.targetFrameRate = 30;
 
         rb2d = GetComponent<Rigidbody2D>();
@@ -53,8 +62,8 @@ public class PlayerController : MonoBehaviour
 
             rb2d.velocity = moveDirection.normalized * speed;
 
-            Encounter();
             PlayerState = PlayerState.Walk;
+            Encounter();
         }
         else
         {
@@ -71,8 +80,23 @@ public class PlayerController : MonoBehaviour
         if (random <= 5)
         {
             Debug.Log("Encounter");
+            Save();
             SceneManager.LoadScene("Battle");
         }
         
+    }
+
+    void Save()
+    {
+        PlayerPrefs.SetFloat("X", gameObject.transform.position.x);
+        PlayerPrefs.SetFloat("Y", gameObject.transform.position.y);
+    }
+    
+    void Load()
+    {
+        float x = PlayerPrefs.GetFloat("X");
+        float y = PlayerPrefs.GetFloat("Y");
+
+        gameObject.transform.position = new Vector2(x, y);
     }
 }
