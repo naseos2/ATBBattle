@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
 
+    private bool isEncounter;
+    public Animator transition;
+    public float transitionTime = 1f;
+
     [InitializeOnLoadMethod]
     static void RunMethod()
     {
@@ -36,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
         Application.targetFrameRate = 30;
 
+        isEncounter = false;
+
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -48,6 +54,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isEncounter)
+            return;
+
         KeybordInput();
     }
 
@@ -64,6 +73,7 @@ public class PlayerController : MonoBehaviour
 
             PlayerState = PlayerState.Walk;
             Encounter();
+            
         }
         else
         {
@@ -79,11 +89,22 @@ public class PlayerController : MonoBehaviour
 
         if (random <= 5)
         {
+            isEncounter = true;
+            rb2d.velocity = moveDirection.normalized * 0;
             Debug.Log("Encounter");
             Save();
-            SceneManager.LoadScene("Battle");
+            StartCoroutine(LoadLevel());
         }
         
+    }
+
+    IEnumerator LoadLevel()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene("Battle");
     }
 
     void Save()
@@ -92,7 +113,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetFloat("Y", gameObject.transform.position.y);
     }
     
-    void Load()
+    public void Load()
     {
         float x = PlayerPrefs.GetFloat("X");
         float y = PlayerPrefs.GetFloat("Y");

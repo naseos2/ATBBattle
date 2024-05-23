@@ -31,6 +31,9 @@ public class PlayerBattle : MonoBehaviour
 
     private GameObject monster;
 
+    public Animator transition;
+    public float transitionTime = 1f;
+
     private void Start()
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
@@ -88,7 +91,12 @@ public class PlayerBattle : MonoBehaviour
 
     IEnumerator BacktoMain()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2f);
+
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
+
         SceneManager.LoadScene("Main");
     }
 }
