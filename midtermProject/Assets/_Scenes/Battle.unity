@@ -410,6 +410,8 @@ MonoBehaviour:
   battleMenu: {fileID: 780199317}
   transition: {fileID: 1970116785}
   transitionTime: 1
+  battleBtn: {fileID: 1474893564}
+  attackBtn: {fileID: 901304376}
 --- !u!1 &292260099
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,10 +587,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1965206037}
+    m_SelectOnDown: {fileID: 901304376}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1328,6 +1330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 2448853936736941804, guid: 829c42b700c4dea49a52489527465d63, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941805, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1837,10 +1843,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 305011481}
+    m_SelectOnDown: {fileID: 1965206037}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5387,10 +5393,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 901304376}
+    m_SelectOnDown: {fileID: 305011481}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5417,7 +5423,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1965206038}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 215616883}
+        m_TargetAssemblyTypeName: PlayerBattle, Assembly-CSharp
+        m_MethodName: Magic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1965206038
 MonoBehaviour:
   m_ObjectHideFlags: 0
