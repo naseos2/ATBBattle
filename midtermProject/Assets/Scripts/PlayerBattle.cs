@@ -12,6 +12,7 @@ public enum BattleState
     Magic,
     Item,
     Run,
+    Dead,
 }
 
 public class PlayerBattle : MonoBehaviour
@@ -38,6 +39,9 @@ public class PlayerBattle : MonoBehaviour
 
     public Button battleBtn;
     public Button attackBtn;
+
+    public Image gameoverBg;
+    public Text gameoverTxt;
 
 
     private void Start()
@@ -83,6 +87,11 @@ public class PlayerBattle : MonoBehaviour
             }
         }
 
+
+        if (nowHp <= 0)
+        {
+            Dead();
+        }
     }
 
     private void BattlePanel()
@@ -131,6 +140,19 @@ public class PlayerBattle : MonoBehaviour
         m.hpSlider.value = m.nowHp / m.maxHp;
     }
 
+    void Dead()
+    {
+        BattleState = BattleState.Dead;
+
+        StartCoroutine(Gameover());
+
+        gameoverBg.gameObject.SetActive(true);
+        gameoverTxt.gameObject.SetActive(true);
+
+        StartCoroutine(BacktoTitle());
+
+    }
+
     IEnumerator BacktoMain()
     {
         yield return new WaitForSeconds(2f);
@@ -140,5 +162,18 @@ public class PlayerBattle : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene("Main");
+    }
+
+    IEnumerator Gameover()
+    { 
+        yield return new WaitForSeconds(5f);
+
+    }
+
+    IEnumerator BacktoTitle()
+    {
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("Title");
     }
 }
