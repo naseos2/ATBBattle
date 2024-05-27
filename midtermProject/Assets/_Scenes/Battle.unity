@@ -1432,7 +1432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941804, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941805, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_RootOrder
@@ -5290,7 +5290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be12623355530c64790e09792a638400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atbTime: 2
+  atbTime: 8
   maxHp: 80
   nowHp: 80
   atbSlider: {fileID: 1622085589}

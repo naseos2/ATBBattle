@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerPrefs.SetFloat("X", 0f);
         PlayerPrefs.SetFloat("Y", -2f);
+        PlayerPrefs.SetFloat("PlayerHp", 100f);
     }
 
     private void Start()

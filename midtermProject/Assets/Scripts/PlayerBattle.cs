@@ -47,6 +47,7 @@ public class PlayerBattle : MonoBehaviour
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
 
+        nowHp = PlayerPrefs.GetFloat("PlayerHp");
         BattleState = BattleState.Idle;
         nowTime = 0f;
         hpSlider.value = nowHp / maxHp;

@@ -47,6 +47,8 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
         Destroy(atbSlider.gameObject);
         Destroy(player.atbSlider.gameObject);
+
+        PlayerPrefs.SetFloat("PlayerHp", player.nowHp);
     }
 
 }
