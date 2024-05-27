@@ -10,7 +10,7 @@ public class CameraMove : MonoBehaviour
 
     private void Start()
     {
-        offset = transform.position - player.transform.position;
+        offset = transform.position - new Vector3(0f, -2f);
     }
 
     private void FixedUpdate()

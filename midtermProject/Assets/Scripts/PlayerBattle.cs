@@ -136,7 +136,7 @@ public class PlayerBattle : MonoBehaviour
         nowTime = 0f;
 
         Monster m = monster.GetComponent<Monster>();
-        m.nowHp -= 30f;
+        m.nowHp -= 50f;
         m.hpSlider.value = m.nowHp / m.maxHp;
     }
 
