@@ -54,6 +54,7 @@ public class Monster : MonoBehaviour
 
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetFloat("PlayerHp", player.nowHp);
+        PlayerPrefs.SetFloat("PlayerMp", player.nowMp);
     }
 
 }

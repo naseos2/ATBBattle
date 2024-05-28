@@ -23,9 +23,12 @@ public class PlayerBattle : MonoBehaviour
 
     public float maxHp;
     public float nowHp;
+    public float maxMp;
+    public float nowMp;
 
     public Slider atbSlider;
     public Slider hpSlider;
+    public Slider mpSlider;
 
     public GameObject menu;
     public GameObject battleMenu;
@@ -50,6 +53,7 @@ public class PlayerBattle : MonoBehaviour
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
         nowHp = PlayerPrefs.GetFloat("PlayerHp");
+        nowMp = PlayerPrefs.GetFloat("PlayerMp");
 
         score = PlayerPrefs.GetInt("Score");
         scoreTxt.text = $"Score : {score}";
@@ -57,6 +61,7 @@ public class PlayerBattle : MonoBehaviour
         BattleState = BattleState.Idle;
         nowTime = 0f;
         hpSlider.value = nowHp / maxHp;
+        mpSlider.value = nowMp / maxMp;
 
     }
 
@@ -137,12 +142,19 @@ public class PlayerBattle : MonoBehaviour
 
     public void Magic()
     {
+        if (nowMp <= 0)
+        {
+            return;
+        }
+
         BattleState = BattleState.Magic;
         Debug.Log("Player's Magic!");
         menu.SetActive(false);
         isMenu = false;
         battleMenu.SetActive(false);
         nowTime = 0f;
+        nowMp -= 20f;
+        mpSlider.value = nowMp / maxMp; 
 
         Monster m = monster.GetComponent<Monster>();
         m.nowHp -= 50f;
