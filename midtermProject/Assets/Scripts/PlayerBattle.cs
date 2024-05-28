@@ -26,12 +26,18 @@ public class PlayerBattle : MonoBehaviour
     public float maxMp;
     public float nowMp;
 
+    public int redPosion;
+    public int bluePosion;
+    public Text redPosionTxt;
+    public Text bluePosionTxt;
+
     public Slider atbSlider;
     public Slider hpSlider;
     public Slider mpSlider;
 
     public GameObject menu;
     public GameObject battleMenu;
+    public GameObject itemMenu;
     private bool isMenu;
 
     private GameObject monster;
@@ -41,6 +47,7 @@ public class PlayerBattle : MonoBehaviour
 
     public Button battleBtn;
     public Button attackBtn;
+    public Button redPosionBtn;
 
     public Image gameoverBg;
     public Text gameoverTxt;
@@ -54,9 +61,14 @@ public class PlayerBattle : MonoBehaviour
         monster = GameObject.FindGameObjectWithTag("Monster");
         nowHp = PlayerPrefs.GetFloat("PlayerHp");
         nowMp = PlayerPrefs.GetFloat("PlayerMp");
+        redPosion = PlayerPrefs.GetInt("RedPosion");
+        bluePosion = PlayerPrefs.GetInt("BluePosion");
 
         score = PlayerPrefs.GetInt("Score");
         scoreTxt.text = $"Score : {score}";
+
+        redPosionTxt.text = $"Red Posion : {redPosion}";
+        bluePosionTxt.text = $"Blue Posion : {bluePosion}";
 
         BattleState = BattleState.Idle;
         nowTime = 0f;
@@ -100,6 +112,14 @@ public class PlayerBattle : MonoBehaviour
                 attackBtn.Select();
             }
         }
+        
+        else if(itemMenu.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                redPosionBtn.Select();
+            }
+        }
 
 
         if (nowHp <= 0)
@@ -120,17 +140,23 @@ public class PlayerBattle : MonoBehaviour
         battleMenu.SetActive(true);
     }
 
+    public void ItemMenu()
+    {
+        menu.SetActive(false);
+        itemMenu.SetActive(true);
+    }
+
     public void Back()
     {
         menu.SetActive(true);
         battleMenu.SetActive(false);
+        itemMenu.SetActive(false);
     }
 
     public void Attack()
     {
         BattleState = BattleState.Hit;
         Debug.Log("Player's Attack!");
-        menu.SetActive(false);
         isMenu = false;
         battleMenu.SetActive(false);
         nowTime = 0f;
@@ -149,7 +175,6 @@ public class PlayerBattle : MonoBehaviour
 
         BattleState = BattleState.Magic;
         Debug.Log("Player's Magic!");
-        menu.SetActive(false);
         isMenu = false;
         battleMenu.SetActive(false);
         nowTime = 0f;
@@ -159,6 +184,61 @@ public class PlayerBattle : MonoBehaviour
         Monster m = monster.GetComponent<Monster>();
         m.nowHp -= 50f;
         m.hpSlider.value = m.nowHp / m.maxHp;
+    }
+
+    public void RedPosion()
+    {
+        if (redPosion <= 0 || nowHp >= 100f)
+        {
+            return;
+        }
+
+        Debug.Log("RedPosion!");
+        isMenu = false;
+        itemMenu.SetActive(false);
+
+        redPosion--;
+        redPosionTxt.text = $"Red Posion : {redPosion}";
+        PlayerPrefs.SetInt("RedPosion", redPosion);
+
+        nowTime = 0f;
+        if (nowHp <= 100f)
+        {
+            nowHp += 100f - nowHp;
+        }
+        else if (nowMp <= 50f)
+        {
+            nowHp += 50f;
+        }
+        hpSlider.value = nowHp / maxHp;
+    }
+
+    public void BluePosion()
+    {
+        if (bluePosion <= 0 || nowMp >= 100f)
+        {
+            return;
+        }
+
+        Debug.Log("BluePosion!");
+        isMenu = false;
+        itemMenu.SetActive(false);
+
+        bluePosion--;
+        bluePosionTxt.text = $"Blue Posion : {bluePosion}";
+        PlayerPrefs.SetInt("BluePosion", bluePosion);
+
+        nowTime = 0f;
+        if (nowMp <= 100f)
+        {
+            nowMp += 100f - nowMp;
+        }
+        else if (nowMp <= 50f)
+        {
+            nowMp += 50f;
+        }
+        
+        mpSlider.value = nowMp / maxMp;
     }
 
     void Dead()

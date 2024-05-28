@@ -12,6 +12,8 @@ public class Title : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerHp", 100f);
         PlayerPrefs.SetFloat("PlayerMp", 100f);
         PlayerPrefs.SetInt("Score", 0);
+        PlayerPrefs.SetInt("RedPosion", 3);
+        PlayerPrefs.SetInt("BluePosion", 3);
         SceneManager.LoadScene("Main");
     }
 }
