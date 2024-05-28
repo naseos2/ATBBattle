@@ -10,6 +10,7 @@ public class Title : MonoBehaviour
         PlayerPrefs.SetFloat("X", 0f);
         PlayerPrefs.SetFloat("Y", -2f);
         PlayerPrefs.SetFloat("PlayerHp", 100f);
+        PlayerPrefs.SetInt("Score", 0);
         SceneManager.LoadScene("Main");
     }
 }

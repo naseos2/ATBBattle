@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum PlayerState
 {
@@ -27,13 +28,17 @@ public class PlayerController : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
-    [InitializeOnLoadMethod]
+    private int score;
+    public Text scoreTxt;
+
+
+/*    [InitializeOnLoadMethod]
     static void RunMethod()
     {
         PlayerPrefs.SetFloat("X", 0f);
         PlayerPrefs.SetFloat("Y", -2f);
         PlayerPrefs.SetFloat("PlayerHp", 100f);
-    }
+    }*/
 
     private void Start()
     {
@@ -45,6 +50,9 @@ public class PlayerController : MonoBehaviour
 
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        score = PlayerPrefs.GetInt("Score");
+        scoreTxt.text = $"Score : {score}";
     }
 
     private void Update()

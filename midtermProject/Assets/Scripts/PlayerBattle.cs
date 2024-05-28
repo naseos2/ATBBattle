@@ -42,12 +42,18 @@ public class PlayerBattle : MonoBehaviour
     public Image gameoverBg;
     public Text gameoverTxt;
 
+    private int score;
+    public Text scoreTxt;
+    public Text gameoverScoreTxt;
 
     private void Start()
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
-
         nowHp = PlayerPrefs.GetFloat("PlayerHp");
+
+        score = PlayerPrefs.GetInt("Score");
+        scoreTxt.text = $"Score : {score}";
+
         BattleState = BattleState.Idle;
         nowTime = 0f;
         hpSlider.value = nowHp / maxHp;
@@ -58,6 +64,9 @@ public class PlayerBattle : MonoBehaviour
     {
         if (!monster.activeSelf)
         {
+            score = PlayerPrefs.GetInt("Score");
+            scoreTxt.text = $"Score : {score}";
+
             StartCoroutine(BacktoMain());
             return;
         }
@@ -148,6 +157,9 @@ public class PlayerBattle : MonoBehaviour
 
         gameoverBg.gameObject.SetActive(true);
         gameoverTxt.gameObject.SetActive(true);
+        gameoverScoreTxt.text = $"Score : {score}";
+        gameoverScoreTxt.gameObject.SetActive(true);
+        PlayerPrefs.SetInt("Score", score);
 
         StartCoroutine(BacktoTitle());
 

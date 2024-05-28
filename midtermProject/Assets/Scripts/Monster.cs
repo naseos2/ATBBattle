@@ -12,6 +12,8 @@ public class Monster : MonoBehaviour
     public float maxHp;
     public float nowHp;
 
+    private int score;
+
     public Slider atbSlider;
     public Slider hpSlider;
 
@@ -21,6 +23,7 @@ public class Monster : MonoBehaviour
     {
         nowTime = 0f;
         hpSlider.value = nowHp / maxHp;
+        score = PlayerPrefs.GetInt("Score");
     }
 
     private void Update()
@@ -47,7 +50,9 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
         Destroy(atbSlider.gameObject);
         Destroy(player.atbSlider.gameObject);
+        score++;
 
+        PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetFloat("PlayerHp", player.nowHp);
     }
 
