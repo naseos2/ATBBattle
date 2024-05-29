@@ -44,6 +44,7 @@ public class PlayerBattle : MonoBehaviour
 
     public Animator transition;
     public float transitionTime = 1f;
+    public Animator playerTransition;
 
     public Button battleBtn;
     public Button attackBtn;
@@ -161,6 +162,8 @@ public class PlayerBattle : MonoBehaviour
         battleMenu.SetActive(false);
         nowTime = 0f;
 
+        StartCoroutine(WalkMotion());
+
         Monster m = monster.GetComponent<Monster>();
         m.nowHp -= 20f;
         m.hpSlider.value = m.nowHp / m.maxHp;
@@ -179,7 +182,9 @@ public class PlayerBattle : MonoBehaviour
         battleMenu.SetActive(false);
         nowTime = 0f;
         nowMp -= 20f;
-        mpSlider.value = nowMp / maxMp; 
+        mpSlider.value = nowMp / maxMp;
+
+        StartCoroutine(WalkMotion());
 
         Monster m = monster.GetComponent<Monster>();
         m.nowHp -= 50f;
@@ -255,6 +260,17 @@ public class PlayerBattle : MonoBehaviour
 
         StartCoroutine(BacktoTitle());
 
+    }
+    IEnumerator WalkMotion()
+    {
+        playerTransition.SetBool("BattleWalk", true);
+
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(2, -0.09f), 1);
+
+        yield return new WaitForSeconds(1f);
+
+        playerTransition.SetBool("BattleWalk", false);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(4, -0.09f), 1);
     }
 
     IEnumerator BacktoMain()

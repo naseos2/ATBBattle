@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 215616882}
   - component: {fileID: 215616881}
   - component: {fileID: 215616883}
+  - component: {fileID: 215616884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -553,7 +554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215616880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.99, y: -0.09, z: 0}
+  m_LocalPosition: {x: 4, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -593,6 +594,7 @@ MonoBehaviour:
   itemMenu: {fileID: 2010210696}
   transition: {fileID: 1970116785}
   transitionTime: 1
+  playerTransition: {fileID: 215616884}
   battleBtn: {fileID: 1474893564}
   attackBtn: {fileID: 901304376}
   redPosionBtn: {fileID: 1560603798}
@@ -600,6 +602,27 @@ MonoBehaviour:
   gameoverTxt: {fileID: 1525951915}
   scoreTxt: {fileID: 568511479}
   gameoverScoreTxt: {fileID: 489468207}
+--- !u!95 &215616884
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215616880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3964e859d9dae9b4e951448134da4d65, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &231425248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941804, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941805, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_RootOrder
@@ -6575,7 +6598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587316848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.71, y: -0.15, z: 0}
+  m_LocalPosition: {x: -4, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6599,6 +6622,7 @@ MonoBehaviour:
   atbTime: 8
   maxHp: 80
   nowHp: 80
+  monsterTransition: {fileID: 0}
   atbSlider: {fileID: 1622085589}
   hpSlider: {fileID: 1110065914}
   player: {fileID: 215616883}
