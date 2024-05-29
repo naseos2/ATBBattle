@@ -59,6 +59,8 @@ public class PlayerBattle : MonoBehaviour
 
     public GameObject attackEffect;
     private GameObject ae;
+    public GameObject magicAttackEffect;
+    private GameObject mae;
 
 
     private void Start()
@@ -166,10 +168,9 @@ public class PlayerBattle : MonoBehaviour
         battleMenu.SetActive(false);
         nowTime = 0f;
 
-       Vector3 mPosition = monster.transform.position;
-
+        Vector3 mPosition = monster.transform.position;
         ae = Instantiate(attackEffect, mPosition, Quaternion.identity);
-        Destroy(ae, 1f);
+        Destroy(ae, 0.8f);
         StartCoroutine(WalkMotion());
 
         Monster m = monster.GetComponent<Monster>();
@@ -191,6 +192,10 @@ public class PlayerBattle : MonoBehaviour
         nowTime = 0f;
         nowMp -= 20f;
         mpSlider.value = nowMp / maxMp;
+
+        Vector3 mPosition = monster.transform.position;
+        mae = Instantiate(magicAttackEffect, mPosition, Quaternion.identity);
+        Destroy(mae, 0.7f);
 
         StartCoroutine(WalkMotion());
 
@@ -280,6 +285,7 @@ public class PlayerBattle : MonoBehaviour
         playerTransition.SetBool("BattleWalk", false);
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(4, -0.09f), 1);
     }
+
 
     IEnumerator BacktoMain()
     {

@@ -45,7 +45,7 @@ public class Monster : MonoBehaviour
 
             Vector3 pPosition = player.transform.position;
             ae = Instantiate(attackEffect, pPosition, Quaternion.identity);
-            Destroy(ae, 0.4f);
+            Destroy(ae, 0.8f);
 
             StartCoroutine(WalkMotion());
         }

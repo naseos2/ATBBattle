@@ -603,6 +603,8 @@ MonoBehaviour:
   scoreTxt: {fileID: 568511479}
   gameoverScoreTxt: {fileID: 489468207}
   attackEffect: {fileID: 1613842048377146642, guid: 552d8d3b7ad34ad4a95998672b32f0e9, type: 3}
+  magicEffect: {fileID: 6159361489798828851, guid: 6c46046d8bd3e684c90d91c2efcf1d6e, type: 3}
+  magicAttackEffect: {fileID: 1437030927434558650, guid: 544910beca4afec41881f80230c5614f, type: 3}
 --- !u!95 &215616884
 Animator:
   serializedVersion: 5
@@ -1888,7 +1890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941804, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2448853936736941805, guid: 829c42b700c4dea49a52489527465d63, type: 3}
       propertyPath: m_RootOrder
