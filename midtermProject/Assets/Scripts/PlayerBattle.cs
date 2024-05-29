@@ -57,6 +57,10 @@ public class PlayerBattle : MonoBehaviour
     public Text scoreTxt;
     public Text gameoverScoreTxt;
 
+    public GameObject attackEffect;
+    private GameObject ae;
+
+
     private void Start()
     {
         monster = GameObject.FindGameObjectWithTag("Monster");
@@ -162,6 +166,10 @@ public class PlayerBattle : MonoBehaviour
         battleMenu.SetActive(false);
         nowTime = 0f;
 
+       Vector3 mPosition = monster.transform.position;
+
+        ae = Instantiate(attackEffect, mPosition, Quaternion.identity);
+        Destroy(ae, 1f);
         StartCoroutine(WalkMotion());
 
         Monster m = monster.GetComponent<Monster>();

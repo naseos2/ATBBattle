@@ -602,6 +602,7 @@ MonoBehaviour:
   gameoverTxt: {fileID: 1525951915}
   scoreTxt: {fileID: 568511479}
   gameoverScoreTxt: {fileID: 489468207}
+  attackEffect: {fileID: 1613842048377146642, guid: 552d8d3b7ad34ad4a95998672b32f0e9, type: 3}
 --- !u!95 &215616884
 Animator:
   serializedVersion: 5
@@ -6531,6 +6532,7 @@ GameObject:
   - component: {fileID: 1587316850}
   - component: {fileID: 1587316849}
   - component: {fileID: 1587316851}
+  - component: {fileID: 1587316852}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -6622,10 +6624,31 @@ MonoBehaviour:
   atbTime: 8
   maxHp: 80
   nowHp: 80
-  monsterTransition: {fileID: 0}
+  monsterTransition: {fileID: 1587316852}
   atbSlider: {fileID: 1622085589}
   hpSlider: {fileID: 1110065914}
   player: {fileID: 215616883}
+--- !u!95 &1587316852
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587316848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a08392c1dd20ce248a533173aedc05e2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1607825059
 GameObject:
   m_ObjectHideFlags: 0
