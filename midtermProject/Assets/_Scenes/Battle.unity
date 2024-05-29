@@ -6628,6 +6628,7 @@ MonoBehaviour:
   atbSlider: {fileID: 1622085589}
   hpSlider: {fileID: 1110065914}
   player: {fileID: 215616883}
+  attackEffect: {fileID: 739685194072670421, guid: 82c91892b31e89240b4f871e865a79f8, type: 3}
 --- !u!95 &1587316852
 Animator:
   serializedVersion: 5

@@ -21,6 +21,9 @@ public class Monster : MonoBehaviour
 
     public PlayerBattle player;
 
+    public GameObject attackEffect;
+    private GameObject ae;
+
     private void Start()
     {
         nowTime = 0f;
@@ -39,6 +42,10 @@ public class Monster : MonoBehaviour
             player.nowHp -= 10;
             player.hpSlider.value = player.nowHp / player.maxHp;
             nowTime = 0f;
+
+            Vector3 pPosition = player.transform.position;
+            ae = Instantiate(attackEffect, pPosition, Quaternion.identity);
+            Destroy(ae, 0.4f);
 
             StartCoroutine(WalkMotion());
         }
