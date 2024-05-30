@@ -13,22 +13,25 @@ public class Monster : MonoBehaviour
     public float nowHp;
 
     private int score;
+    public int mScore;
 
     public Animator monsterTransition;
 
     public Slider atbSlider;
     public Slider hpSlider;
 
-    public PlayerBattle player;
+    private PlayerBattle player;
 
     public GameObject attackEffect;
     private GameObject ae;
+
 
     private void Start()
     {
         nowTime = 0f;
         hpSlider.value = nowHp / maxHp;
         score = PlayerPrefs.GetInt("Score");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBattle>();
     }
 
     private void Update()
@@ -61,7 +64,7 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
         Destroy(atbSlider.gameObject);
         Destroy(player.atbSlider.gameObject);
-        score++;
+        score += mScore;
 
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetFloat("PlayerHp", player.nowHp);

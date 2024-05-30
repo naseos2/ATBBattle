@@ -62,9 +62,11 @@ public class PlayerBattle : MonoBehaviour
     public GameObject magicAttackEffect;
     private GameObject mae;
 
-
+    public GameObject[] enemyList;
     private void Start()
     {
+        int rdNum = Random.Range(0, 3);
+        Instantiate(enemyList[rdNum]);
         monster = GameObject.FindGameObjectWithTag("Monster");
         nowHp = PlayerPrefs.GetFloat("PlayerHp");
         nowMp = PlayerPrefs.GetFloat("PlayerMp");
@@ -81,7 +83,6 @@ public class PlayerBattle : MonoBehaviour
         nowTime = 0f;
         hpSlider.value = nowHp / maxHp;
         mpSlider.value = nowMp / maxMp;
-
     }
 
     private void Update()
