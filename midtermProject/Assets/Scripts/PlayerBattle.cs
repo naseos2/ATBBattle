@@ -221,11 +221,11 @@ public class PlayerBattle : MonoBehaviour
         PlayerPrefs.SetInt("RedPosion", redPosion);
 
         nowTime = 0f;
-        if (nowHp <= 100f)
+        if (nowHp >= 50f)
         {
             nowHp += 100f - nowHp;
         }
-        else if (nowMp <= 50f)
+        else if (nowHp < 50f)
         {
             nowHp += 50f;
         }
@@ -248,11 +248,11 @@ public class PlayerBattle : MonoBehaviour
         PlayerPrefs.SetInt("BluePosion", bluePosion);
 
         nowTime = 0f;
-        if (nowMp <= 100f)
+        if (nowMp >= 50f)
         {
             nowMp += 100f - nowMp;
         }
-        else if (nowMp <= 50f)
+        else if (nowMp < 50f)
         {
             nowMp += 50f;
         }
